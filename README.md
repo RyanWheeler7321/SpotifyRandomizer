@@ -42,7 +42,7 @@ This tool creates a new Spotify playlist with songs randomly generated from the 
      ]
    }
    ```
-   - **`main_playlist_ids`**: your go-to playlists (excluded if you check the box).
+   - **`main_playlist_ids`**: your go-to playlists.
    - **`featured_playlists`**: extra source playlists you can generate from.
 
 3. **Run**:
