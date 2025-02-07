@@ -5,8 +5,8 @@
 This tool creates a new Spotify playlist with songs randomly generated from the artists of whichever source playlists you specify. It launches a simple GUI for customizing song count, playback, and source selection. You can customize the config file with your main playlists or any optional secondary playlists.
 
 ## Features
-- **Four random selection methods** (plain random, same album, top tracks, full discography).
-- **Exclude main playlists** (avoid tracks you already have daily).
+- **Four random selection methods** (based on the artist of a random song, same track, same album, top tracks, full discography).
+- **Exclude main playlists** (this program takes songs from your playlist and gets tracks from those artists, but can avoid tracks you already have on your main playlists if you want all new music).
 - **Immediate playback** on a detected Spotify device (optional).
 - **Opens** the new playlist in your browser and attempts to open in the desktop client.
 - **JSON‐based config** for easy customization.
