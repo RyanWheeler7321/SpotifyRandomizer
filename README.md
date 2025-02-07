@@ -1,6 +1,6 @@
 # Spotify Random Playlist Generator
 
-Generates a new random Spotify playlist from your chosen “source” playlists, optionally excluding tracks found in your “main” playlists. Launches a GUI to choose how many songs, whether to exclude or immediately play, and to pick which playlist(s) to source from.
+This tool generates a new personalized random Spotify playlist from your chosen “source” playlists, optionally excluding tracks found in your “main” playlists. You can input your own main playlists or specific source playlists to generate songs from. Launches a GUI to choose how many songs, whether to exclude or immediately play, and to pick which playlist(s) to source from.
 
 ## Features
 - Random track selection (artist’s same album, top tracks, discography, or plain random).
