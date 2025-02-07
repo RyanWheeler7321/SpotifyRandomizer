@@ -21,23 +21,24 @@ Generates a new random Spotify playlist from your chosen “source” playlists,
 
 2. **Edit `my_config.json`**:
    ```json
-{
-  "client_id": "YOUR_SPOTIFY_CLIENT_ID",
-  "client_secret": "YOUR_SPOTIFY_CLIENT_SECRET",
-  "redirect_uri": "http://localhost:8080/callback",
-  "scope": "playlist-read-private playlist-modify-private user-read-private user-library-read user-modify-playback-state user-read-playback-state",
-  "main_playlist_ids": [
+   {
+   "client_id": "YOUR_SPOTIFY_CLIENT_ID",
+   "client_secret": "YOUR_SPOTIFY_CLIENT_SECRET",
+   "redirect_uri": "http://localhost:8080/callback",
+   "scope": "playlist-read-private playlist-modify-private user-read-private user-library-read user-modify-playback-state user-read-playback-state",
+   "main_playlist_ids": [
     "YOUR_MAIN_PLAYLIST_ID_1",
     "YOUR_MAIN_PLAYLIST_ID_2"
-  ],
-  "featured_playlists": [
+   ],
+   "featured_playlists": [
     {
       "id": "YOUR_FEATURED_PLAYLIST_ID",
       "name": "Some Playlist Name",
       "genres": "Short description here"
     }
-  ]
-}
+   ]
+   }
+
 
 
 3. **Run the program**:
