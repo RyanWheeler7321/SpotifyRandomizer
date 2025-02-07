@@ -1,4 +1,4 @@
-<img src="programexample.png" alt="Program Example" width="500" />
+<img src="programexample.png" alt="Program Example" width="400" />
 
 # Spotify Random Playlist Generator
 
