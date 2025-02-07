@@ -1,3 +1,5 @@
+![Program Example](programexample.png)
+
 # Spotify Random Playlist Generator
 
 This tool creates a new Spotify playlist with songs randomly generated from the artists of whichever source playlists you specify. It launches a simple GUI for customizing song count, playback, and source selection. You can customize the config file with your main playlists or any optional secondary playlists.
