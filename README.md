@@ -1,4 +1,4 @@
-![Program Example](programexample.png)
+<img src="programexample.png" alt="Program Example" width="500" />
 
 # Spotify Random Playlist Generator
 
@@ -10,6 +10,7 @@ This tool creates a new Spotify playlist with songs randomly generated from the 
 - **Immediate playback** on a detected Spotify device (optional).
 - **Opens** the new playlist in your browser and attempts to open in the desktop client.
 - **JSON‐based config** for easy customization.
+- **Random Theme Color** each time the program starts.
 
 ## Requirements
 - Python 3.x
