@@ -1,68 +1,77 @@
 # Spotify Random Playlist Generator
 
-This tool generates a new personalized random Spotify playlist from your chosen “source” playlists, optionally excluding tracks found in your “main” playlists. You can input your own main playlists or specific source playlists to generate songs from. Launches a GUI to choose how many songs, whether to exclude or immediately play, and to pick which playlist(s) to source from.
+This tool creates a personalized random Spotify playlist from whichever source playlists you specify, optionally excluding your main playlists. It launches a simple GUI for customizing song count, playback, and source selection.
 
 ## Features
-- Random track selection (artist’s same album, top tracks, discography, or plain random).
-- Exclude tracks already in your main playlists if desired.
-- Optionally start playback immediately on a detected Spotify device.
-- Opens the newly created playlist in your browser and attempts to open in the Spotify desktop client.
-- All configuration stored in a simple JSON file.
+- **Four random selection methods** (plain random, same album, top tracks, full discography).
+- **Exclude main playlists** (avoid tracks you already have daily).
+- **Immediate playback** on a detected Spotify device (optional).
+- **Opens** the new playlist in your browser and attempts to open in the desktop client.
+- **JSON‐based config** for easy customization.
 
 ## Requirements
 - Python 3.x
 - [Spotipy](https://spotipy.readthedocs.io/) (`pip install spotipy`)
-- A [Spotify Developer](https://developer.spotify.com/dashboard/) App (client ID & secret).
+- [Spotify Developer](https://developer.spotify.com/dashboard/) App (client ID & secret)
 
 ## Setup
-1. **Create or edit your Spotify Developer app**:
-   - In your app’s settings, add a redirect URI (e.g. `http://localhost:8080/callback`).
-   - Copy the client ID and secret.
+1. **Spotify Developer App**:
+   - In your app settings, add a redirect URI (like `http://localhost:8080/callback`).
+   - Copy the Client ID and Client Secret.
 
-2. **Edit `my_config.json`**:
+2. **`my_config.json`**:
    ```json
    {
-   "client_id": "YOUR_SPOTIFY_CLIENT_ID",
-   "client_secret": "YOUR_SPOTIFY_CLIENT_SECRET",
-   "redirect_uri": "http://localhost:8080/callback",
-   "scope": "playlist-read-private playlist-modify-private user-read-private user-library-read user-modify-playback-state user-read-playback-state",
-   "main_playlist_ids": [
-    "YOUR_MAIN_PLAYLIST_ID_1",
-    "YOUR_MAIN_PLAYLIST_ID_2"
-   ],
-   "featured_playlists": [
-    {
-      "id": "YOUR_FEATURED_PLAYLIST_ID",
-      "name": "Some Playlist Name",
-      "genres": "Short description here"
-    }
-   ]
+     "client_id": "YOUR_SPOTIFY_CLIENT_ID",
+     "client_secret": "YOUR_SPOTIFY_CLIENT_SECRET",
+     "redirect_uri": "http://localhost:8080/callback",
+     "scope": "playlist-read-private playlist-modify-private user-read-private user-library-read user-modify-playback-state user-read-playback-state",
+     "main_playlist_ids": [
+       "YOUR_MAIN_PLAYLIST_ID_1",
+       "YOUR_MAIN_PLAYLIST_ID_2"
+     ],
+     "featured_playlists": [
+       {
+         "id": "YOUR_FEATURED_PLAYLIST_ID",
+         "name": "Some Playlist Name",
+         "genres": "Short description"
+       }
+     ]
    }
+   ```
+   - **`main_playlist_ids`**: your go-to playlists (excluded if you check the box).
+   - **`featured_playlists`**: extra source playlists you can generate from.
 
-
-
-3. **Run the program**:
-   - Directly with:
-     ```
+3. **Run**:
+   - Directly:
+     ```bash
      python SpotifyRandomizer.py
      ```
-   - **Or** via a `.bat` file (Windows). For example, `run.bat`:
-     ```
+   - Or via a `.bat` file (Windows):
+     ```bat
      @echo off
      python SpotifyRandomizer.py
      pause
      ```
 
-4. **Using the GUI**:
-   - **Number of Songs**: Sets how many to generate.
-   - **Exclude songs** in your main playlists if you don’t want repeats.
-   - **Start Playing Now** toggles immediate playback.
-   - **Generate from My Main Playlists** or any “featured” playlist you specify in the config.
+4. **GUI**:
+   - **Number of Songs**: how many to generate.
+   - **Exclude songs** from your main playlists if you want no duplicates.
+   - **Start Playing Now**: automatically plays the new playlist.
+   - **Generate** from your main or featured playlists (buttons).
+
+## How It Works
+1. The script picks each song by randomly choosing **one** of four methods:
+   - **Random from Source** (just picks from your listed source tracks)
+   - **Same Album** (picks a track from the same album as a random seed)
+   - **Artist Top Tracks** (picks a track from a random artist’s top tracks)
+   - **Artist Discography** (picks a track from any album by that artist)
+2. It checks if the track is available in the US market and, if the “exclude main” box is checked, ensures it’s not already in one of your main playlists.
+3. Continues until it collects the requested number of valid songs.
+4. Creates a new private playlist and optionally starts playback.
 
 ## Notes
-- If you want a public playlist, change `public=False` to `public=True` in the script.
-- If you don’t exclude main playlists, you might get duplicates. That’s normal.
-- Some tracks may be unavailable in the US region; they are skipped.
-- Make sure you’ve followed or saved any playlist ID you reference in `my_config.json`, or you’ll get a 404 from Spotify.
-
-Enjoy randomizing your Spotify playlists!
+- To make the playlist public, change `public=False` to `public=True` in the code.
+- Expect duplicates unless you exclude main.
+- Some tracks are skipped if they’re not available in the US.
+- Must have permission to read the playlists you use in `my_config.json`.
