@@ -140,7 +140,7 @@ class SpotifyRandomizer:
 
     def remove_parentheses(self, text):
         """Removes parentheses and enclosed text (e.g. 'Song (Live)' -> 'Song')."""
-        return re.sub(r'\s*\(.*?\)\s*', '', text)
+        return re.sub(r'\\s*\(.*?\)\\s*', '', text)
 
     ########################################################
     # Random Track-Picking Methods
@@ -376,26 +376,48 @@ class RandomSongGUI:
         self.root.title("Random Song Generator")
         self.root.configure(bg="#111111")
 
+        # Add random color picking
+        neon_colors = [
+            "#E6E6FA",  # Pale Light Lavender Purple
+            "#FFB6C1",  # Pale Light Pink
+            "#AFEEEE",  # Pale Light Cyan
+            "#98FB98",  # Pale Light Lime Green
+            "#FF7F7F",  # Pale Light Red
+            "#ADD8E6",  # Pale Light Blue
+            "#F0F8FF",  # Pale White
+            "#FFFFE0",  # Pale Light Yellow
+            "#FFDAB9",  # Pale Light Orange
+            "#8A2BE2",  # Pale Light Indigo
+            "#FF77FF",  # Pale Light Reddish-Pink
+            "#20B2AA",  # Pale Light Teal
+            "#4169E1",  # Lighter Deep Blue (RoyalBlue)
+            "#FF77FF"   # Pale Light Magenta
+        ]
+        self.theme_color = random.choice(neon_colors)
+        dbg(f"Selected theme color: {self.theme_color}")
+
         # TTK styling
         style = ttk.Style(self.root)
         style.theme_use("clam")
-        style.configure(".", background="#111111", foreground="#98FB98", font=("Segoe UI", 10))
+
+        # Use randomly chosen theme_color for foreground
+        style.configure(".", background="#111111", foreground=self.theme_color, font=("Segoe UI", 10))
         style.configure("TFrame", background="#111111")
-        style.configure("TLabel", background="#111111", foreground="#98FB98")
+        style.configure("TLabel", background="#111111", foreground=self.theme_color)
         style.configure("TButton",
                         background="#1e1e1e",
-                        foreground="#98FB98",
+                        foreground=self.theme_color,
                         borderwidth=2,
                         focusthickness=3,
-                        focuscolor="#98FB98")
+                        focuscolor=self.theme_color)
         style.map("TButton",
                   background=[("active", "#333333")],
-                  foreground=[("active", "#98FB98")])
+                  foreground=[("active", self.theme_color)])
         style.configure("TScale",
                         background="#111111",
                         troughcolor="#000000",
                         troughrelief="flat")
-        style.map("TScale", background=[("active", "#98FB98")])
+        style.map("TScale", background=[("active", self.theme_color)])
         style.configure("custom.Horizontal.TProgressbar",
                         troughcolor="#000000",
                         background="#FFFFFF",
@@ -453,7 +475,7 @@ class RandomSongGUI:
             variable=self.exclude_main_var,
             onvalue=True,
             offvalue=False,
-            fg="#98FB98",
+            fg=self.theme_color,
             bg="#111111",
             selectcolor="#333333"
         )
@@ -469,7 +491,7 @@ class RandomSongGUI:
             variable=self.start_play_var,
             onvalue=True,
             offvalue=False,
-            fg="#98FB98",
+            fg=self.theme_color,
             bg="#111111",
             selectcolor="#333333"
         )
@@ -481,7 +503,9 @@ class RandomSongGUI:
         ttk.Label(
             self.container,
             text="Featured Playlists:",
-            font=("Segoe UI", 12, "bold")
+            font=("Segoe UI", 12, "bold"),
+            foreground=self.theme_color,
+            background="#111111"
         ).grid(row=4, column=0, sticky="w", pady=(0,5))
 
         start_row = 5
@@ -501,7 +525,7 @@ class RandomSongGUI:
         self.progress.grid_remove()
 
         # Status label
-        self.status_label = ttk.Label(self.container, text="", foreground="#98FB98")
+        self.status_label = ttk.Label(self.container, text="", foreground=self.theme_color, background="#111111")
         self.status_label.grid(row=start_row + len(FEATURED_PLAYLISTS) + 1, column=0, sticky="ew", pady=10)
 
         self.center_window()
@@ -521,9 +545,9 @@ class RandomSongGUI:
         """Creates a row in the GUI for one featured playlist."""
         frame = ttk.Frame(self.container)
         frame.grid(row=row_idx, column=0, sticky="ew", pady=5)
-        lbl_name = ttk.Label(frame, text=fp_info["name"], font=("Segoe UI", 11, "bold"))
+        lbl_name = ttk.Label(frame, text=fp_info["name"], font=("Segoe UI", 11, "bold"), foreground=self.theme_color, background="#111111")
         lbl_name.pack(side="top", anchor="w")
-        lbl_genres = ttk.Label(frame, text=fp_info["genres"], font=("Segoe UI", 9, "italic"))
+        lbl_genres = ttk.Label(frame, text=fp_info["genres"], font=("Segoe UI", 9, "italic"), foreground=self.theme_color, background="#111111")
         lbl_genres.pack(side="top", anchor="w")
         btn = ttk.Button(
             frame,
