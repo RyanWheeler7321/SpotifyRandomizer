@@ -80,7 +80,6 @@ class SpotifyRandomizer:
         try:
             me = self.sp.current_user()
             self.user_id = me["id"]
-            # keep debug text exactly the same
             dbg(f"Authenticated as user: {self.user_id} (" + me.get("display_name","No Name") + ")")
         except Exception as e:
             dbg(f"Authentication failed: {e}")
