@@ -2,27 +2,33 @@
 
 # Spotify Random Playlist Generator
 
-This tool creates a new Spotify playlist with songs randomly generated from the artists of whichever source playlists you specify. It launches a simple GUI for customizing song count, playback, and source selection. You can customize the config file with your main playlists or any optional secondary playlists.
+This makes a new Spotify playlist by pulling random songs from the artists connected to whatever source playlists you give it. It opens a simple GUI, lets you choose how many songs you want, and can optionally start playing the new playlist right away.
 
 ## Features
-- **Four random selection methods** (based on the artist of a random song, same track, same album, top tracks, full discography).
-- **Exclude main playlists** (this program takes songs from your playlist and gets tracks from those artists, but can avoid tracks you already have on your main playlists if you want all new music).
-- **Immediate playback** on a detected Spotify device (optional).
-- **Opens** the new playlist in your browser and attempts to open in the desktop client.
-- **JSON‐based config** for easy customization.
-- **Random Theme Color** each time the program starts.
+- Four random selection methods:
+  - random from the source playlists
+  - another track from the same album
+  - a top track from the same artist
+  - a track from that artist's wider discography
+- Can skip tracks that already exist in your main playlists
+- Can start playback immediately on an available Spotify device
+- Opens the generated playlist in your browser and tries to open it in the desktop app too
+- Uses a simple JSON config for playlists and app credentials
+- Picks a random theme color on startup
 
 ## Requirements
 - Python 3.x
 - [Spotipy](https://spotipy.readthedocs.io/) (`pip install spotipy`)
-- [Spotify Developer](https://developer.spotify.com/dashboard/) App (client ID & secret)
+- A [Spotify Developer](https://developer.spotify.com/dashboard/) app
 
 ## Setup
-1. **Spotify Developer App**:
-   - In your app settings, add a redirect URI (like `http://localhost:8080/callback`).
-   - Copy the Client ID and Client Secret.
+1. Create a Spotify developer app.
+   - Add a redirect URI like `http://localhost:8080/callback`
+   - Copy the client ID and client secret
 
-2. **`my_config.json`**:
+2. Copy `my_config.example.json` to `my_config.json`.
+
+3. Fill in `my_config.json`:
    ```json
    {
      "client_id": "YOUR_SPOTIFY_CLIENT_ID",
@@ -42,39 +48,35 @@ This tool creates a new Spotify playlist with songs randomly generated from the 
      ]
    }
    ```
-   - **`main_playlist_ids`**: your go-to playlists.
-   - **`featured_playlists`**: extra source playlists you can generate from.
+   - `main_playlist_ids` are your main playlists
+   - `featured_playlists` are optional extra playlists to generate from
 
-3. **Run**:
-   - Directly:
-     ```bash
-     python SpotifyRandomizer.py
-     ```
-   - Or via a `.bat` file (Windows):
-     ```bat
-     @echo off
-     python SpotifyRandomizer.py
-     pause
-     ```
+4. Run it:
+   ```bash
+   python SpotifyRandomizer.py
+   ```
 
-4. **GUI**:
-   - **Number of Songs**: how many to generate.
-   - **Exclude songs** from your main playlists if you want no duplicates.
-   - **Start Playing Now**: automatically plays the new playlist.
-   - **Generate** from your main or featured playlists (buttons).
+   Or on Windows:
+   ```bat
+   SpotifyRandomizer.bat
+   ```
+
+5. In the GUI:
+   - choose the number of songs
+   - decide whether to exclude songs from your main playlists
+   - decide whether playback should start immediately
+   - generate from your main playlists or one of the featured playlists
 
 ## How It Works
-1. The script picks each song by randomly choosing **one** of four methods:
-   - **Random from Source** (just picks from your listed source tracks)
-   - **Same Album** (picks a track from the same album as a random seed)
-   - **Artist Top Tracks** (picks a track from a random artist’s top tracks)
-   - **Artist Discography** (picks a track from any album by that artist)
-2. It checks if the track is available in the US market and, if the “exclude main” box is checked, ensures it’s not already in one of your main playlists.
-3. Continues until it collects the requested number of valid songs.
-4. Creates a new private playlist and optionally starts playback.
+1. It gathers tracks from the playlists you selected.
+2. Each song slot uses one of the random selection methods.
+3. If duplicate filtering is on, it skips anything already in your main playlists.
+4. It skips tracks that are not available in the US market.
+5. When the list is full, it creates a new private playlist and can start playback immediately.
 
 ## Notes
-- To make the playlist public, change `public=False` to `public=True` in the code.
-- Expect duplicates unless you exclude main.
-- Some tracks are skipped if they’re not available in the US.
-- Must have permission to read the playlists you use in `my_config.json`.
+- The app looks for `my_config.json` and keeps Spotify token cache data in `my_token_cache.json`, so both are ignored by Git.
+- If you want public playlists instead of private ones, change `public=False` in the code.
+- Expect duplicates unless you turn on the main-playlist exclusion option.
+- Some tracks get skipped if Spotify does not allow them in the US market.
+- You need permission to read whatever playlists you use in your config.

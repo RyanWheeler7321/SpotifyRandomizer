@@ -23,12 +23,18 @@ def dbg(msg):
 # Load Configuration from JSON
 #####################################################
 
-CONFIG_FILE = "my_config.json"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIG_FILE = os.path.join(SCRIPT_DIR, "my_config.json")
+CONFIG_TEMPLATE_FILE = os.path.join(SCRIPT_DIR, "my_config.example.json")
 try:
     with open(CONFIG_FILE, "r", encoding="utf-8") as f:
         config = json.load(f)
 except Exception as e:
-    print(f"Failed to load {CONFIG_FILE}: {e}")
+    print(f"Failed to load {os.path.basename(CONFIG_FILE)}: {e}")
+    print(
+        f"Copy {os.path.basename(CONFIG_TEMPLATE_FILE)} to {os.path.basename(CONFIG_FILE)} "
+        "and fill in your Spotify app details first."
+    )
     sys.exit(1)
 
 CLIENT_ID = config.get("client_id", "")
@@ -38,6 +44,11 @@ SCOPE = config.get("scope", "playlist-read-private playlist-modify-private")
 
 MAIN_PLAYLIST_IDS = config.get("main_playlist_ids", [])
 FEATURED_PLAYLISTS = config.get("featured_playlists", [])
+
+if not CLIENT_ID or CLIENT_ID == "YOUR_SPOTIFY_CLIENT_ID" or not CLIENT_SECRET or CLIENT_SECRET == "YOUR_SPOTIFY_CLIENT_SECRET":
+    print(f"{os.path.basename(CONFIG_FILE)} still has placeholder Spotify credentials.")
+    print(f"Open {os.path.basename(CONFIG_FILE)}, add your Spotify app details, and run the program again.")
+    sys.exit(1)
 
 #####################################################
 # SpotifyRandomizer
@@ -67,7 +78,7 @@ class SpotifyRandomizer:
             client_secret=CLIENT_SECRET,
             redirect_uri=REDIRECT_URI,
             scope=SCOPE,
-            cache_path="my_token_cache.json",
+            cache_path=os.path.join(SCRIPT_DIR, "my_token_cache.json"),
             show_dialog=True
         )
         self.sp = spotipy.Spotify(auth_manager=auth_manager)
