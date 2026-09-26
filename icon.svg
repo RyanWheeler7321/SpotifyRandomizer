@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Spotify Randomizer icon">
+<defs>
+  <radialGradient id="disc" cx="54" cy="52" r="42" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#46EA86"/><stop offset="1" stop-color="#149A45"/>
+  </radialGradient>
+  <linearGradient id="bg" x1="16" y1="8" x2="112" y2="120" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#1b1628"/><stop offset="1" stop-color="#0e0c16"/>
+  </linearGradient>
+  <linearGradient id="rim" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#3BE477" stop-opacity="0.55"/>
+    <stop offset="0.45" stop-color="#3BE477" stop-opacity="0.08"/>
+    <stop offset="1" stop-color="#3BE477" stop-opacity="0.22"/>
+  </linearGradient>
+</defs>
+<path d="M24 0H104L128 24V104L104 128H24L0 104V24Z" fill="url(#bg)"/>
+<path d="M24.8 1.5H103.2L126.5 24.8V103.2L103.2 126.5H24.8L1.5 103.2V24.8Z" fill="none" stroke="url(#rim)" stroke-width="2"/>
+<path d="M32 10H96L118 32V96L96 118H32L10 96V32Z" fill="none" stroke="#3e3157" stroke-width="2"/>
+<circle cx="64" cy="66" r="34" fill="url(#disc)"/>
+<mask id="gap" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128"><rect width="128" height="128" fill="#fff"/><path d="M43 56H52C61 56 65 76 75 76H84" fill="none" stroke="#000" stroke-width="11"/></mask>
+<path d="M43 76H52C61 76 65 56 75 56H84" fill="none" stroke="#0E1A12" stroke-width="5.5" stroke-linecap="round" mask="url(#gap)"/>
+<path d="M43 56H52C61 56 65 76 75 76H84" fill="none" stroke="#0E1A12" stroke-width="5.5" stroke-linecap="round"/>
+<path d="M79 50L86 56L79 62M79 70L86 76L79 82" fill="none" stroke="#0E1A12" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="93" cy="36" r="13" fill="#1B1628" stroke="#3BE477" stroke-width="3"/>
+<path d="M95 29V40.5" stroke="#E9FFF0" stroke-width="3" stroke-linecap="round"/>
+<path d="M95 29C98 30 100 31 100 34" fill="none" stroke="#E9FFF0" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="91.5" cy="41" r="4" fill="#E9FFF0"/>
+</svg>

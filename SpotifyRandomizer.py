@@ -27,13 +27,16 @@ CONFIG_FILE = "my_config.json"
 try:
     with open(CONFIG_FILE, "r", encoding="utf-8") as f:
         config = json.load(f)
+except FileNotFoundError:
+    print(f"{CONFIG_FILE} not found. Copy my_config.example.json to {CONFIG_FILE} and fill in your Spotify app details.")
+    sys.exit(1)
 except Exception as e:
     print(f"Failed to load {CONFIG_FILE}: {e}")
     sys.exit(1)
 
 CLIENT_ID = config.get("client_id", "")
 CLIENT_SECRET = config.get("client_secret", "")
-REDIRECT_URI = config.get("redirect_uri", "http://localhost:8080/callback")
+REDIRECT_URI = config.get("redirect_uri", "http://127.0.0.1:8080/callback")
 SCOPE = config.get("scope", "playlist-read-private playlist-modify-private")
 
 MAIN_PLAYLIST_IDS = config.get("main_playlist_ids", [])

@@ -1,5 +1,7 @@
 <img src="programexample.png" alt="Program Example" width="400" />
 
+<img src="icon.svg" alt="Spotify Randomizer icon" width="96">
+
 # Spotify Random Playlist Generator
 
 This tool creates a new Spotify playlist with songs randomly generated from the artists of whichever source playlists you specify. It launches a simple GUI for customizing song count, playback, and source selection. You can customize the config file with your main playlists or any optional secondary playlists.
@@ -14,20 +16,20 @@ This tool creates a new Spotify playlist with songs randomly generated from the 
 
 ## Requirements
 - Python 3.x
-- [Spotipy](https://spotipy.readthedocs.io/) (`pip install spotipy`)
+- [Spotipy](https://spotipy.readthedocs.io/) (`pip install -r requirements.txt`)
 - [Spotify Developer](https://developer.spotify.com/dashboard/) App (client ID & secret)
 
 ## Setup
 1. **Spotify Developer App**:
-   - In your app settings, add a redirect URI (like `http://localhost:8080/callback`).
+   - In your app settings, add a redirect URI (like `http://127.0.0.1:8080/callback`). Spotify doesn't accept `localhost` anymore.
    - Copy the Client ID and Client Secret.
 
-2. **`my_config.json`**:
+2. **`my_config.json`**: copy `my_config.example.json` to `my_config.json` and fill it in.
    ```json
    {
      "client_id": "YOUR_SPOTIFY_CLIENT_ID",
      "client_secret": "YOUR_SPOTIFY_CLIENT_SECRET",
-     "redirect_uri": "http://localhost:8080/callback",
+     "redirect_uri": "http://127.0.0.1:8080/callback",
      "scope": "playlist-read-private playlist-modify-private user-read-private user-library-read user-modify-playback-state user-read-playback-state",
      "main_playlist_ids": [
        "YOUR_MAIN_PLAYLIST_ID_1",
