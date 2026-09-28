@@ -1,27 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Spotify Randomizer icon">
 <defs>
   <radialGradient id="disc" cx="54" cy="52" r="42" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#46EA86"/><stop offset="1" stop-color="#149A45"/>
+    <stop offset="0" stop-color="#3BD878"/><stop offset="1" stop-color="#1FAC54"/>
   </radialGradient>
   <linearGradient id="bg" x1="16" y1="8" x2="112" y2="120" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#1b1628"/><stop offset="1" stop-color="#0e0c16"/>
+    <stop offset="0" stop-color="#181424"/><stop offset="1" stop-color="#110E1A"/>
   </linearGradient>
   <linearGradient id="rim" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#3BE477" stop-opacity="0.55"/>
-    <stop offset="0.45" stop-color="#3BE477" stop-opacity="0.08"/>
-    <stop offset="1" stop-color="#3BE477" stop-opacity="0.22"/>
+    <stop offset="0" stop-color="#3BE477" stop-opacity="0.42"/>
+    <stop offset="0.45" stop-color="#3BE477" stop-opacity="0.2"/>
+    <stop offset="1" stop-color="#3BE477" stop-opacity="0.3"/>
   </linearGradient>
+  <linearGradient id="frame" x1="10" y1="6" x2="118" y2="122" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#3BE477" stop-opacity="0.9"/><stop offset="0.5" stop-color="#3BE477" stop-opacity="0.62"/><stop offset="1" stop-color="#3BE477" stop-opacity="0.75"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="64" cy="64" r="44" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#3BE477" stop-opacity="0.16"/><stop offset="1" stop-color="#3BE477" stop-opacity="0"/>
+  </radialGradient>
 </defs>
 <path d="M24 0H104L128 24V104L104 128H24L0 104V24Z" fill="url(#bg)"/>
 <path d="M24.8 1.5H103.2L126.5 24.8V103.2L103.2 126.5H24.8L1.5 103.2V24.8Z" fill="none" stroke="url(#rim)" stroke-width="2"/>
-<path d="M32 10H96L118 32V96L96 118H32L10 96V32Z" fill="none" stroke="#3e3157" stroke-width="2"/>
-<circle cx="64" cy="66" r="34" fill="url(#disc)"/>
-<mask id="gap" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128"><rect width="128" height="128" fill="#fff"/><path d="M43 56H52C61 56 65 76 75 76H84" fill="none" stroke="#000" stroke-width="11"/></mask>
-<path d="M43 76H52C61 76 65 56 75 56H84" fill="none" stroke="#0E1A12" stroke-width="5.5" stroke-linecap="round" mask="url(#gap)"/>
-<path d="M43 56H52C61 56 65 76 75 76H84" fill="none" stroke="#0E1A12" stroke-width="5.5" stroke-linecap="round"/>
-<path d="M79 50L86 56L79 62M79 70L86 76L79 82" fill="none" stroke="#0E1A12" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="93" cy="36" r="13" fill="#1B1628" stroke="#3BE477" stroke-width="3"/>
-<path d="M95 29V40.5" stroke="#E9FFF0" stroke-width="3" stroke-linecap="round"/>
-<path d="M95 29C98 30 100 31 100 34" fill="none" stroke="#E9FFF0" stroke-width="2.5" stroke-linecap="round"/>
-<circle cx="91.5" cy="41" r="4" fill="#E9FFF0"/>
+<path d="M32 10H96L118 32V96L96 118H32L10 96V32Z" fill="none" stroke="url(#frame)" stroke-width="3.0" stroke-linejoin="round"/>
+<circle cx="64" cy="64" r="44" fill="url(#glow)"/>
+<circle cx="64" cy="64" r="36" fill="url(#disc)"/>
+<path d="M53.07 83.50H57.27V43.60H53.07Z" fill="#0E1A12"/>
+<path d="M80.07 77.50H84.27V38.40H80.07Z" fill="#0E1A12"/>
+<path d="M53.07 43.00L84.27 37.00V43.50L53.07 49.50Z" fill="#0E1A12"/>
+<g transform="rotate(-20 50 81)"><rect x="42.50" y="73.50" width="15" height="15" rx="3.60" fill="#0E1A12"/><circle cx="46.25" cy="77.25" r="1.35" fill="#2FCB6A"/><circle cx="50.00" cy="81.00" r="1.35" fill="#2FCB6A"/><circle cx="53.75" cy="84.75" r="1.35" fill="#2FCB6A"/></g>
+<g transform="rotate(-20 77 75)"><rect x="69.50" y="67.50" width="15" height="15" rx="3.60" fill="#0E1A12"/><circle cx="73.25" cy="71.25" r="1.35" fill="#2FCB6A"/><circle cx="80.75" cy="71.25" r="1.35" fill="#2FCB6A"/><circle cx="77.00" cy="75.00" r="1.35" fill="#2FCB6A"/><circle cx="73.25" cy="78.75" r="1.35" fill="#2FCB6A"/><circle cx="80.75" cy="78.75" r="1.35" fill="#2FCB6A"/></g>
 </svg>
